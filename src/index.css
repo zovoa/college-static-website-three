@@ -1,0 +1,104 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-cyberpunk-black text-white font-exo overflow-x-hidden;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-orbitron font-bold;
+  }
+}
+
+@layer components {
+  .neon-border {
+    @apply relative;
+  }
+  
+  .neon-border::before {
+    content: '';
+    @apply absolute inset-0 rounded-md border border-cyberpunk-cyan opacity-70 blur-[2px] z-[-1];
+  }
+  
+  .neon-text {
+    @apply relative text-white;
+    text-shadow: 0 0 5px rgba(0, 240, 255, 0.7), 0 0 10px rgba(0, 240, 255, 0.5);
+  }
+  
+  .neon-text-pink {
+    @apply relative text-white;
+    text-shadow: 0 0 5px rgba(255, 56, 100, 0.7), 0 0 10px rgba(255, 56, 100, 0.5);
+  }
+  
+  .neon-text-purple {
+    @apply relative text-white;
+    text-shadow: 0 0 5px rgba(110, 13, 255, 0.7), 0 0 10px rgba(110, 13, 255, 0.5);
+  }
+  
+  .neon-button {
+    @apply relative overflow-hidden px-6 py-2 rounded-md bg-transparent border border-cyberpunk-cyan text-white 
+           transition-all duration-300 shadow-[0_0_10px_rgba(0,240,255,0.5)] hover:shadow-[0_0_20px_rgba(0,240,255,0.8)];
+  }
+  
+  .neon-button::after {
+    content: '';
+    @apply absolute inset-0 bg-cyberpunk-cyan opacity-10 transition-opacity duration-300;
+  }
+  
+  .neon-button:hover::after {
+    @apply opacity-20;
+  }
+  
+  .cyber-grid {
+    @apply relative bg-cyber-grid bg-grid-md;
+    background-position: center;
+  }
+  
+  .cyber-grid::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-cyberpunk-black z-10;
+  }
+  
+  .cyber-grid-overlay {
+    @apply absolute inset-0 w-full h-full bg-cyber-grid bg-grid-md z-0 opacity-30;
+    background-position: center;
+  }
+  
+  .glitch-effect {
+    @apply relative overflow-hidden;
+  }
+  
+  .glitch-effect::before, .glitch-effect::after {
+    content: attr(data-text);
+    @apply absolute left-0 top-0 w-full h-full;
+  }
+  
+  .glitch-effect::before {
+    @apply text-cyberpunk-cyan left-[2px] animation-delay-100;
+    animation: glitch 0.4s infinite;
+  }
+  
+  .glitch-effect::after {
+    @apply text-cyberpunk-pink left-[-2px] animation-delay-50;
+    animation: glitch 0.4s infinite;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-cyberpunk-black;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-cyberpunk-cyan bg-opacity-30 rounded-full;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-opacity-50;
+  }
+}
